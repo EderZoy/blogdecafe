@@ -1,0 +1,250 @@
+/*Agregamos los selectores*/
+:root {
+    /*Definimos fuentes*/
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', san-serif; 
+    /*Paleta de colores*/
+    --principal: #784D3C;
+    --principalClaro: #b96d4ed7; 
+    --principalOscuro: #4d3931; 
+    --blanco: #ffffff; 
+    --negro: #000000;
+    --grisClaro: #e1e1e1; 
+}
+
+html {
+    box-sizing: border-box; /*Para hacer que el borde no afecte el ancho de nuestros elementos*/
+    font-size: 62.5%; /*Para que 1rem sea igual a 10px*/
+}
+
+*, *:before, *:after { /**Se aplica a todo*/
+    box-sizing: inherit; 
+    /*Lo que hace inherit es heredar del elemento padre (html)*/
+}
+
+body {
+    font-family: var(--fuenteParrafos);
+    font-size: 1.6rem;
+    line-height: 2; /*Interlineado de 2*/
+}
+
+/*GLOBALES
+Lo que se va a utlizar más de una vez*/
+.contenedor {
+    max-width: 120rem;
+    width: 90%; /*Permite que los elementos no se vayan completamente a la orilla*/
+    /*Lo mismo que las dos lineas de arriba: width: min(90%, 120rem); */
+    margin: 0 auto; /*Para centrar el contenido horizontalmente*/
+
+}
+
+a {
+    text-decoration: none; /*A todos los enlaces le sacamos el interlineado*/
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.2; /*Para manejar el intrelienado*/
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+h4 {
+    font-size: 2.8rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*UTILIDADES*/
+.no-margin {
+    /*Ciertos elementos no tendran margen*/
+    margin: 0;
+}
+.no-padding {
+    padding: 0; 
+}
+.centrar-texto {
+    text-align: center;
+}
+
+/*HEADER*/
+.header {
+    /*Añadimos la imagen de fondo*/
+    background-image: url(/img/banner.jpg) ;
+    height: 60rem; /*Para que aparezca le damos altura*/
+    background-size: cover; /*Toma todo el espacio*/
+    background-repeat: no-repeat; /*Para que no se repita*/
+    background-position: center center; /*Se debe ver centrado horizontalmente y verticalmente primordialmente*/
+}
+.header__texto {
+    color: var(--blanco);
+    margin-top: 5rem; /*Separacion*/
+}
+@media (min-width: 768px) {
+    .header__texto {
+        margin-top: 15rem;
+    }
+}
+.barra {
+    padding: 3rem;
+}
+@media (min-width: 768px) {
+    .barra { 
+        /*Para acomodar elementos utilizar flexbox es la mejor opcion*/
+        display: flex;
+        justify-content: space-between; /*Coloca uno a la izquierda y otro a la derecha*/
+        align-items: center; /*Para alinear verticalmente*/
+    }
+}
+.logo {
+    color: var(--blanco);
+}
+.logo:hover {
+    color: burlywood;
+}
+
+.logo__nombre {
+    font-weight: 400;
+}
+.logo__bold {
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .navegacion {
+        display: flex; /*Los posiciona uno al lado del otro*/
+        gap: 2rem;/*Los separa*/
+    }
+}
+.navegacion__enlace {
+    display: block ; /*Los elementos se posicionan uno debajo del otro*/
+    text-align: center; /*centrado horizontalmente*/
+    color: var(--blanco);
+    font-size: 2.8rem;
+}
+
+/*Parte del Blog*/
+.sidebar {
+    margin-left: 2rem;
+}
+/*Para posicionar los elementos hacemos uso del patron SIDENAR CON FLEXBOX
+utilizamos un media pq en pantallas chicas esta bien que se vea uno debajo del otro*/
+@media (min-width: 768px ) {
+    .contenido-principal {
+        display: flex; /*Posiciona de izq a der*/
+        justify-content: space-between; /*Puede que sea inecesario al tener el gap*/
+        gap: 2rem;
+    }
+    /*Debemos repartir pixeles para armarlos de diferente tamaño*/
+    .sidebar {
+        flex: 1; /*Indicamos que tendra un crecimiento de 1*/
+
+    }
+    .blog {
+        flex: 2; /*Indicamos que tendra un crecimiento de 2*/
+    }
+    
+}
+
+.entrada {
+    /*Agregamos la linea que separa cada articulo, por debajo*/
+    border-bottom: 1px solid var(--grisClaro);
+    margin-bottom: 2rem;
+}
+/*En el ultimo articulo no es necesario esa separación
+por ende mediante last-of-type le decimos que no lo tenga*/
+.entrada:last-of-type {  /*Selecciona el ultimo*/
+    border: none;
+    margin-bottom: 0;
+}
+/*Le damos estilo al boton*/
+.boton {
+    /*Para que en un dispotivo tome todo el espacio disponible
+    utilizamos un block*/
+    display: block;
+    font-family: var(--fuenteHeading);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 3rem; 
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700; /*letra en negrita*/ 
+    margin-top: 1rem;
+    margin-bottom: 2rem; 
+    border-radius: .3rem; /*Para redondear puntas*/
+}
+
+@media (min-width: 768px ) {
+    /*En dispositivos más grandes el boton no ocupa todo el espacio*/
+    .boton {
+       /* display: inline; este no respera margenes ni widht por ende usamos inline-block*/
+       display: inline-block; 
+
+    }
+}
+.boton--primario {
+    background-color: var(--principalOscuro);
+}
+.boton--primario:hover {
+    background-color: var(--principalClaro);
+    color: var(--negro);
+}
+p {
+    text-align: justify; /*A mi me gusta el texto justificado*/
+    font-size: 1.8rem;
+}
+
+/*Barra Lateral*/
+.boton--secundario{
+    background-color: var(--principal);
+}
+.boton--secundario:hover {
+    background-color: var(--principalClaro);
+    color: var(--negro);
+}
+.cursos {
+    list-style: none; /*Quitamos viñetas*/
+}
+.widget-curso {
+    /*Agregamos la linea que separa cada articulo, por debajo*/
+    border-bottom: 1px solid var(--grisClaro);
+    margin-bottom: 2rem;
+}
+.widget-curso:last-of-type {  /*Selecciona el ultimo*/
+    border: none;
+    margin-bottom: 0;
+}
+.widget-curso__label {
+    font-family: var(--fuenteHeading);
+    font-weight: 700;
+    font-size: 2rem;
+}
+.widget-curso__info {
+    font-family: var(--fuenteHeading);
+    font-weight: 400;
+    font-size: 2rem;
+}
+.fondoh3 {
+    background-color: var(--grisClaro);
+    padding: 1rem;
+    text-align: center;
+}
+/*FOOTER*/
+.footer {
+    background-color: #000000;
+    padding-bottom: 2rem; /*3 abajo */
+    margin-top: 4rem;
+}
+    
