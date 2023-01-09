@@ -133,6 +133,7 @@ img {
     text-align: center; /*centrado horizontalmente*/
     color: var(--blanco);
     font-size: 2.8rem;
+    margin-right: 1rem;
 }
 
 /*Parte del Blog*/
@@ -184,8 +185,12 @@ por ende mediante last-of-type le decimos que no lo tenga*/
     margin-top: 1rem;
     margin-bottom: 2rem; 
     border-radius: .3rem; /*Para redondear puntas*/
-}
+    border: none; 
 
+}
+.boton:hover {
+    cursor: pointer;
+}
 @media (min-width: 768px ) {
     /*En dispositivos más grandes el boton no ocupa todo el espacio*/
     .boton {
@@ -247,4 +252,103 @@ p {
     padding-bottom: 2rem; /*3 abajo */
     margin-top: 4rem;
 }
+
+
+/*PAGINA NOSOTROS
+Utiliza estilos definidos anteriormente y los siguientess:*/
+@media (min-width: 768px) { /*La medida estandar para una tablet es de 768px*/
+    .sobre-nosotros {
+        display: grid;
+        /*Para hacer las dos columnas iguales*/
+        grid-template-columns: repeat(2, 1fr);
+        /*Para hacer separación entre columnas*/
+        column-gap: 2rem; /*20 pixeles*/
+        margin-right: 1rem;
+    }
+}
+/*Hacemos una distinción indicando donde estamos parados*/
+.marcado {
+    color: rgb(233, 233, 81);
+    font-weight: 700;
+}
     
+/*PAGINA CURSOS*/
+/*Separación entre cursos*/
+.curso {
+    padding: 3rem 0;
+    /*Agregamos la linea que separa cada articulo, por debajo*/
+    border-bottom: 1px solid var(--grisClaro);
+    margin-bottom: 2rem;
+}
+.curso:last-of-type {  /*Selecciona el ultimo*/
+    border: none;
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) { /*La medida estandar para una tablet es de 768px*/
+    .curso {
+        display: grid;
+        /*Para hacer las dos columnas iguales*/
+        grid-template-columns: 2fr 4fr;
+        /*Para hacer separación entre columnas*/
+        column-gap: 2rem; /*20 pixeles*/
+        margin-right: 1rem;
+    }
+}
+.curso__label {
+    font-family: var(--fuenteHeading);
+    font-weight: 700;
+    font-size: 2rem;
+}
+.curso__info {
+    font-family: var(--fuenteHeading);
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+/*Entrada*/
+li {
+    font-size: 2rem;
+}
+
+/*Contactos*/
+.contacto-bg {
+    background-image: url(/img/contacto.jpg);
+    height: 40rem; /*Para que aparezca le damos altura*/
+    background-size: cover; /*Toma todo el espacio*/
+    background-repeat: no-repeat; /*Para que no se repita*/
+    background-position: center center; /*Se debe ver centrado horizontalmente y verticalmente primordialmente*/
+}
+
+/*CSS al Formulario*/
+.formulario {
+    background-color: var(--blanco);
+    /*Para posicionarlo hacia arriba de la imagen:*/
+    margin: -5rem auto 0 auto; /*arriba derecho abajo izquierdo Esto lo hace hacia arriba*/
+    width: 95%; /*No toma todo el ancho*/
+    padding: 5rem;
+}
+.campo {
+    display: flex; /*Para hacer uso de propiedades de flex en los hijos*/
+    margin-bottom: 2rem;/*Para separar los campos*/
+    text-align: center;
+    justify-content: flex-end;
+}
+.campo__label {
+    flex: 0 0 9rem; /*Hace que no modifique su tamaño y le deje uno fijo*/
+    padding-right: 2rem;
+}
+.campo__field {
+    flex: 1; /*Todo el espacio que quede disponible lo toma gracias al flex:1*/
+    border: 1px solid var(--principalOscuro);
+    padding: 2rem;
+}
+/*Tendremos un modificador para el text area*/
+.campo__field--textarea{
+    /*tendra el mismo diseño que los otros input pero
+    sera más alto*/
+    height: 20rem; /*Altura de 200pixeles o 20rem*/
+}
+.boton--contacto {
+    padding: 2rem 4rem;
+}
